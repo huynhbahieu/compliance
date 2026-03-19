@@ -100,7 +100,7 @@ const mockFiles: CertificateFile[] = [
     fileType: 'application/pdf',
     uploadDate: '20/03/2025',
     uploadedBy: 'Phạm Văn D',
-    description: 'Chứng chỉ WRAP - Sản xuất có trách nhiệm',
+    description: 'Chứng ch�� WRAP - Sản xuất có trách nhiệm',
     tags: ['WRAP', 'Xí nghiệp 1']
   },
   {
@@ -338,26 +338,26 @@ export function CertificateStorage() {
 
       {/* File List */}
       <div className="bg-white rounded-lg border border-slate-200">
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto scrollbar-thin">
           <table className="w-full">
             <thead className="bg-slate-50 border-b border-slate-200">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider whitespace-nowrap">
                   File
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider whitespace-nowrap hidden md:table-cell">
                   Chứng chỉ
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider whitespace-nowrap hidden lg:table-cell">
                   Kích thước
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider whitespace-nowrap hidden xl:table-cell">
                   Người upload
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider whitespace-nowrap">
                   Ngày upload
                 </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-slate-600 uppercase tracking-wider">
+                <th className="px-4 py-3 text-right text-xs font-medium text-slate-600 uppercase tracking-wider whitespace-nowrap">
                   Thao tác
                 </th>
               </tr>
@@ -365,11 +365,11 @@ export function CertificateStorage() {
             <tbody className="divide-y divide-slate-200">
               {filteredFiles.map((file) => (
                 <tr key={file.id} className="hover:bg-slate-50 transition-colors">
-                  <td className="px-6 py-4">
+                  <td className="px-4 py-4">
                     <div className="flex items-center gap-3">
                       {getFileIcon(file.fileType)}
-                      <div className="max-w-xs">
-                        <p className="text-sm font-medium text-slate-900 truncate">
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-medium text-slate-900 truncate max-w-[200px]">
                           {file.fileName}
                         </p>
                         <p className="text-xs text-slate-500 mt-1 line-clamp-1">
@@ -378,25 +378,25 @@ export function CertificateStorage() {
                       </div>
                     </div>
                   </td>
-                  <td className="px-6 py-4">
+                  <td className="px-4 py-4 whitespace-nowrap hidden md:table-cell">
                     <span className="text-sm text-slate-900">{file.certificateName}</span>
                   </td>
-                  <td className="px-6 py-4">
+                  <td className="px-4 py-4 whitespace-nowrap hidden lg:table-cell">
                     <span className="text-sm text-slate-600">{formatFileSize(file.fileSize)}</span>
                   </td>
-                  <td className="px-6 py-4">
+                  <td className="px-4 py-4 whitespace-nowrap hidden xl:table-cell">
                     <div className="flex items-center gap-2">
-                      <User className="w-4 h-4 text-slate-400" />
+                      <User className="w-4 h-4 text-slate-400 flex-shrink-0" />
                       <span className="text-sm text-slate-600">{file.uploadedBy}</span>
                     </div>
                   </td>
-                  <td className="px-6 py-4">
+                  <td className="px-4 py-4 whitespace-nowrap">
                     <div className="flex items-center gap-2">
-                      <Calendar className="w-4 h-4 text-slate-400" />
+                      <Calendar className="w-4 h-4 text-slate-400 flex-shrink-0 hidden sm:block" />
                       <span className="text-sm text-slate-600">{file.uploadDate}</span>
                     </div>
                   </td>
-                  <td className="px-6 py-4">
+                  <td className="px-4 py-4 whitespace-nowrap">
                     <div className="flex items-center justify-end gap-2">
                       <button 
                         onClick={() => setSelectedFile(file)}

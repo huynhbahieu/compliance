@@ -170,38 +170,38 @@ export function AuditList() {
 
       {/* Table */}
       <div className="bg-white rounded-lg border border-slate-200 overflow-hidden">
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto scrollbar-thin">
           <table className="w-full">
             <thead className="bg-slate-50 border-b border-slate-200">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider whitespace-nowrap">
                   Chương trình
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider whitespace-nowrap hidden md:table-cell">
                   Khách hàng
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider whitespace-nowrap hidden lg:table-cell">
                   Nhà máy / Xí nghiệp
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider whitespace-nowrap">
                   Loại audit
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider whitespace-nowrap hidden xl:table-cell">
                   Auditor
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider whitespace-nowrap">
                   Ngày audit
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider whitespace-nowrap hidden lg:table-cell">
                   Kết quả
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider whitespace-nowrap hidden xl:table-cell">
                   Chi phí
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider whitespace-nowrap">
                   Trạng thái
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider whitespace-nowrap">
                   Thao tác
                 </th>
               </tr>
@@ -209,16 +209,16 @@ export function AuditList() {
             <tbody className="divide-y divide-slate-200">
               {filteredAudits.map((audit) => (
                 <tr key={audit.id} className="hover:bg-slate-50 transition-colors">
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-4 py-4 whitespace-nowrap">
                     <span className="font-medium text-slate-900">{audit.program}</span>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-700">
+                  <td className="px-4 py-4 whitespace-nowrap text-sm text-slate-700 hidden md:table-cell">
                     {audit.customer}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-700">
+                  <td className="px-4 py-4 whitespace-nowrap text-sm text-slate-700 hidden lg:table-cell">
                     {audit.factory}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm">
+                  <td className="px-4 py-4 whitespace-nowrap text-sm">
                     <span className={`inline-flex px-2 py-1 rounded-md text-xs ${
                       audit.type === 'Nội bộ' ? 'bg-blue-50 text-blue-700' :
                       audit.type === 'Khách hàng' ? 'bg-purple-50 text-purple-700' :
@@ -227,22 +227,22 @@ export function AuditList() {
                       {audit.type}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-sm text-slate-700">
+                  <td className="px-4 py-4 text-sm text-slate-700 hidden xl:table-cell">
                     {audit.auditor}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-700">
+                  <td className="px-4 py-4 whitespace-nowrap text-sm text-slate-700">
                     {audit.date}
                   </td>
-                  <td className="px-6 py-4 text-sm text-slate-700">
+                  <td className="px-4 py-4 text-sm text-slate-700 hidden lg:table-cell">
                     {audit.result}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-700">
+                  <td className="px-4 py-4 whitespace-nowrap text-sm text-slate-700 hidden xl:table-cell">
                     {audit.cost}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-4 py-4 whitespace-nowrap">
                     <StatusBadge status={audit.status} />
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-4 py-4 whitespace-nowrap">
                     <Link 
                       to={`/audits/${audit.id}`}
                       className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-700 text-sm font-medium"

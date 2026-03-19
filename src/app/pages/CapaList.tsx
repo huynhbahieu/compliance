@@ -263,35 +263,35 @@ export function CapaList() {
 
       {/* CAPA List */}
       <div className="bg-white rounded-lg border border-slate-200">
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto scrollbar-thin">
           <table className="w-full">
             <thead className="bg-slate-50 border-b border-slate-200">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider whitespace-nowrap">
                   CAPA ID
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider whitespace-nowrap">
                   Mức độ
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider whitespace-nowrap hidden md:table-cell">
                   Danh mục
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider w-80">
+                <th className="px-4 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider whitespace-nowrap">
                   Mô tả
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider whitespace-nowrap hidden lg:table-cell">
                   Người phụ trách
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider whitespace-nowrap hidden xl:table-cell">
                   Phòng ban
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider whitespace-nowrap">
                   Hạn xử lý
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider whitespace-nowrap hidden md:table-cell">
                   Tiến độ
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider whitespace-nowrap">
                   Trạng thái
                 </th>
               </tr>
@@ -299,23 +299,25 @@ export function CapaList() {
             <tbody className="divide-y divide-slate-200">
               {filteredCapas.map((capa) => (
                 <tr key={capa.id} className="hover:bg-slate-50 transition-colors">
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-4 py-4 whitespace-nowrap">
                     <span className="font-semibold text-slate-900">{capa.id}</span>
                     <p className="text-xs text-slate-500">{capa.findingId}</p>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-4 py-4 whitespace-nowrap">
                     <StatusBadge status={capa.severity} />
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-700">
+                  <td className="px-4 py-4 whitespace-nowrap text-sm text-slate-700 hidden md:table-cell">
                     {capa.category}
                   </td>
-                  <td className="px-6 py-4 text-sm text-slate-700">
-                    {capa.description}
+                  <td className="px-4 py-4 text-sm text-slate-700 max-w-xs">
+                    <div className="line-clamp-2">
+                      {capa.description}
+                    </div>
                     <p className="text-xs text-slate-500 mt-1">{capa.audit}</p>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm">
+                  <td className="px-4 py-4 whitespace-nowrap text-sm hidden lg:table-cell">
                     <div className="flex items-center gap-2">
-                      <div className="w-7 h-7 bg-blue-100 rounded-full flex items-center justify-center">
+                      <div className="w-7 h-7 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
                         <span className="text-xs font-medium text-blue-700">
                           {capa.owner.split(' ').slice(-2).map(n => n[0]).join('')}
                         </span>
@@ -323,15 +325,15 @@ export function CapaList() {
                       <span className="text-slate-900">{capa.owner}</span>
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-700">
+                  <td className="px-4 py-4 whitespace-nowrap text-sm text-slate-700 hidden xl:table-cell">
                     {capa.department}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm">
+                  <td className="px-4 py-4 whitespace-nowrap text-sm">
                     <span className={capa.status === 'overdue' ? 'text-red-600 font-medium' : 'text-slate-700'}>
                       {capa.deadline}
                     </span>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-4 py-4 whitespace-nowrap hidden md:table-cell">
                     <div className="flex items-center gap-2">
                       <div className="flex-1 w-24 bg-slate-200 rounded-full h-2">
                         <div
@@ -347,7 +349,7 @@ export function CapaList() {
                       <span className="text-sm text-slate-700 w-10">{capa.progress}%</span>
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-4 py-4 whitespace-nowrap">
                     <StatusBadge status={capa.status} />
                   </td>
                 </tr>

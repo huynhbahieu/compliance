@@ -14,12 +14,12 @@ import {
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
 const auditByMonthData = [
-  { month: 'T10', internal: 4, customer: 3, thirdParty: 2 },
-  { month: 'T11', internal: 5, customer: 4, thirdParty: 3 },
-  { month: 'T12', internal: 6, customer: 5, thirdParty: 2 },
-  { month: 'T1', internal: 3, customer: 2, thirdParty: 1 },
-  { month: 'T2', internal: 4, customer: 3, thirdParty: 2 },
-  { month: 'T3', internal: 5, customer: 4, thirdParty: 3 },
+  { id: 'month-1', month: 'T10', internal: 4, customer: 3, thirdParty: 2 },
+  { id: 'month-2', month: 'T11', internal: 5, customer: 4, thirdParty: 3 },
+  { id: 'month-3', month: 'T12', internal: 6, customer: 5, thirdParty: 2 },
+  { id: 'month-4', month: 'T1', internal: 3, customer: 2, thirdParty: 1 },
+  { id: 'month-5', month: 'T2', internal: 4, customer: 3, thirdParty: 2 },
+  { id: 'month-6', month: 'T3', internal: 5, customer: 4, thirdParty: 3 },
 ];
 
 const capaByDepartmentData = [
@@ -131,14 +131,14 @@ export function Dashboard() {
           <h2 className="text-lg font-semibold text-slate-900 mb-4">Số lượng Audit theo tháng</h2>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={auditByMonthData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="month" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="internal" name="Nội bộ" fill="#3b82f6" />
-              <Bar dataKey="customer" name="Khách hàng" fill="#10b981" />
-              <Bar dataKey="thirdParty" name="Bên thứ 3" fill="#f59e0b" />
+              <CartesianGrid key="grid" strokeDasharray="3 3" />
+              <XAxis key="xaxis" dataKey="month" />
+              <YAxis key="yaxis" />
+              <Tooltip key="tooltip" />
+              <Legend key="legend" />
+              <Bar key="bar-internal" dataKey="internal" name="Nội bộ" fill="#3b82f6" />
+              <Bar key="bar-customer" dataKey="customer" name="Khách hàng" fill="#10b981" />
+              <Bar key="bar-thirdparty" dataKey="thirdParty" name="Bên thứ 3" fill="#f59e0b" />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -149,6 +149,7 @@ export function Dashboard() {
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>
               <Pie
+                key="pie"
                 data={capaByDepartmentData}
                 cx="50%"
                 cy="50%"
@@ -162,7 +163,7 @@ export function Dashboard() {
                   <Cell key={`cell-${entry.id}`} fill={COLORS[index % COLORS.length]} />
                 ))}
               </Pie>
-              <Tooltip />
+              <Tooltip key="pie-tooltip" />
             </PieChart>
           </ResponsiveContainer>
         </div>

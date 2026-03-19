@@ -20,5 +20,5 @@ build/
 .DS_Store
 Thumbs.db
 
-# Source archive (đã giải nén)
-KSNB.zip
+# Source archives (đã giải nén)
+*.zip
